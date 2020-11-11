@@ -720,10 +720,10 @@ class SlbConnection(connection.Connection):
         for instance_id in server_ids:
             for lb_status in self.get_all_load_balancer_status(instance_id):
                 lbs[lb_status.load_balancer_id].append(instance_id)
-        for lb_id, bs_ids in lbs.iteritems():
+        for lb_id, bs_ids in lbs.items():
             self.remove_backend_server_ids(lb_id, list(set(bs_ids)))
 
-        return lbs.keys()
+        return list(lbs.keys())
 
     def deregister_backend_servers(self, backend_servers):
         return (

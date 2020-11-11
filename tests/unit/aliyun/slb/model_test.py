@@ -164,7 +164,7 @@ class BackendServerTest(unittest.TestCase):
 
     def testRepr(self):
         bs = BackendServer('id', 1)
-        self.assertTrue(repr(bs).startswith(u'<BackendServer id'))
+        self.assertTrue(repr(bs).startswith('<BackendServer id'))
 
 
 class ListenerStatusTest(unittest.TestCase):
@@ -194,7 +194,7 @@ class ListenerStatusTest(unittest.TestCase):
 
     def testListenerStatusRepr(self):
         ls = ListenerStatus(1, [])
-        self.assertTrue(repr(ls).startswith(u'<ListenerStatus 1 at '))
+        self.assertTrue(repr(ls).startswith('<ListenerStatus 1 at '))
 
 
 class TCPListenerTest(unittest.TestCase):
@@ -211,7 +211,7 @@ class TCPListenerTest(unittest.TestCase):
 
     def testRepr(self):
         listener = TCPListener('id', 1, 1)
-        self.assertTrue(repr(listener).startswith(u'<TCPListener on 1 for id'))
+        self.assertTrue(repr(listener).startswith('<TCPListener on 1 for id'))
 
 
 class HTTPListenerTest(unittest.TestCase):
@@ -248,7 +248,7 @@ class HTTPListenerTest(unittest.TestCase):
 
     def testRepr(self):
         lstn = HTTPListener('id', 1, 1)
-        self.assertTrue(repr(lstn).startswith(u'<HTTPListener on 1 at '))
+        self.assertTrue(repr(lstn).startswith('<HTTPListener on 1 at '))
 
 
 class BackendServerStatusTest(unittest.TestCase):
@@ -266,5 +266,5 @@ class BackendServerStatusTest(unittest.TestCase):
     def testRepr(self):
         bss = BackendServerStatus('id', 's')
         self.assertTrue(
-            repr(bss).startswith(u'<BackendServerStatus id is s at '))
+            repr(bss).startswith('<BackendServerStatus id is s at '))
 

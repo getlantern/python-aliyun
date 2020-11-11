@@ -81,8 +81,8 @@ class Instance(object):
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         self.creation_time = creation_time
-	self.expired_time = expired_time
-	self.instance_charge_type = instance_charge_type
+        self.expired_time = expired_time
+        self.instance_charge_type = instance_charge_type
         self.description = description
         self.operation_locks = operation_locks
         self.zone_id = zone_id
@@ -168,8 +168,8 @@ class Snapshot(object):
             self.snapshot_id, self.progress, id(self))
 
     def __eq__(self, other):
-        print self.__dict__
-        print other.__dict__
+        print(self.__dict__)
+        print(other.__dict__)
         return (self.__class__ == other.__class__ and
                 self.__dict__ == other.__dict__)
 
@@ -228,8 +228,8 @@ class AutoSnapshotPolicy(object):
         return u'<AutoSnapshotPolicy at %s>' % id(self)
 
     def __eq__(self, other):
-        print self.__dict__
-        print other.__dict__
+        print(self.__dict__)
+        print(other.__dict__)
         return (self.__class__ == other.__class__ and
                 self.__dict__ == other.__dict__)
 
@@ -342,8 +342,8 @@ class Disk(object):
             self.disk_id, self.disk_type, self.disk_size, id(self))
 
     def __eq__(self, other):
-        print self.__dict__
-        print other.__dict__
+        print(self.__dict__)
+        print(other.__dict__)
         return (self.__class__ == other.__class__ and
                 self.__dict__ == other.__dict__)
 

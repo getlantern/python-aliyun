@@ -183,8 +183,8 @@ class EcsConnection(Connection):
             int(resp['InternetMaxBandwidthIn']),
             int(resp['InternetMaxBandwidthOut']),
             dateutil.parser.parse(resp['CreationTime']),
-	    dateutil.parser.parse(resp['ExpiredTime']),
-	    resp['InstanceChargeType'],
+            dateutil.parser.parse(resp['ExpiredTime']),
+            resp['InstanceChargeType'],
             resp['Description'],
             resp['ClusterId'],
             [x for x in resp['OperationLocks']['LockReason']],
@@ -295,44 +295,44 @@ class EcsConnection(Connection):
     def report_expiring_instance(self, days=7):
         """Report PrePaid instances that are about to expire in <days>.
 
-	Args:
-	    days (int): Check instances that will expire in <days>.
-	"""
-	expiring_instances = []
-	all_instances = self.get_all_instance_ids()
-	for ins in all_instances:
-	    res = self.get_instance(ins)
-	    if res.instance_charge_type == 'PrePaid':
-	        """
-		tzinfo has to be the same as the one in instance.expired_time
-		So we get it first, then provide it to now() as an arg
-		"""
-		tz = res.expired_time.tzinfo
-		now = datetime.datetime.now(tz)
-	        if (res.expired_time - now).days <= days:
-		    expiring_instances.append(ins)
+        Args:
+        days (int): Check instances that will expire in <days>.
+        """
+        expiring_instances = []
+        all_instances = self.get_all_instance_ids()
+        for ins in all_instances:
+            res = self.get_instance(ins)
+            if res.instance_charge_type == 'PrePaid':
+                """
+                tzinfo has to be the same as the one in instance.expired_time
+                So we get it first, then provide it to now() as an arg
+                """
+                tz = res.expired_time.tzinfo
+                now = datetime.datetime.now(tz)
+                if (res.expired_time - now).days <= days:
+                    expiring_instances.append(ins)
 
-	return expiring_instances
+        return expiring_instances
 
     def renew_instance(self, instance_id, period=None):
         """Renew an PrePaid Instance.
 
-	Args:
-	    instance_id (str): The id of the instance.
-	    period (int): The period of renewing an Instance, in month. Valid values are,
-	    							- 1 - 9
-								- 12
-								- 24
-								- 36
-	"""
-	params = {'Action': 'RenewInstance',
-	          'InstanceId': instance_id}
+        Args:
+            instance_id (str): The id of the instance.
+            period (int): The period of renewing an Instance, in month. Valid values are,
+                                                                    - 1 - 9
+                                                                - 12
+                                                                - 24
+                                                                - 36
+        """
+        params = {'Action': 'RenewInstance',
+                  'InstanceId': instance_id}
         
-	if period is None:
-	    exit('Period Must be supplied. Valid values are [1-9, 12, 24, 36]')
-	params['Period'] = period
+        if period is None:
+            exit('Period Must be supplied. Valid values are [1-9, 12, 24, 36]')
+        params['Period'] = period
 
-	self.get(params)
+        self.get(params)
 
     def replace_system_disk(self, instance_id, image_id):
         """Replace an Instance's system disk to the given Image.
@@ -544,7 +544,7 @@ class EcsConnection(Connection):
             hostname=None, password=None, system_disk_type=None,
             internet_charge_type=None,
             instance_charge_type='PrePaid', period=1,
-	    io_optimized=None,
+            io_optimized=None,
             data_disks=None, description=None, zone_id=None):
         """Create an instance.
 
@@ -556,11 +556,11 @@ class EcsConnection(Connection):
             instance_name (str): The name to use for the instance.
             internet_max_bandwidth_in (int): Max bandwidth in.
             internet_max_bandwidth_out (int): Max bandwidth out.
-	    instance_charge_type (str): The charge type of the instance, 'PrePaid' or 'PostPaid'.
-	    period (int): The time period of the 'PrePaid' instances.
-	    io_optimized (str): Specify if the instance is IO optimized instance
-	                        - None (default)
-			        - optimized
+        instance_charge_type (str): The charge type of the instance, 'PrePaid' or 'PostPaid'.
+        period (int): The time period of the 'PrePaid' instances.
+        io_optimized (str): Specify if the instance is IO optimized instance
+                            - None (default)
+                    - optimized
             hostname (str): The hostname to assign.
             password (str): The root password to assign.
             system_disk_type (str): cloud, ephemeral or ephemeral_hio.
@@ -622,8 +622,8 @@ class EcsConnection(Connection):
             params['InternetMaxBandwidthIn'] = str(internet_max_bandwidth_in)
         if internet_max_bandwidth_out:
             params['InternetMaxBandwidthOut'] = str(internet_max_bandwidth_out)
-	if io_optimized:
-	    params['IoOptimized'] = io_optimized
+        if io_optimized:
+            params['IoOptimized'] = io_optimized
         if hostname:
             params['HostName'] = hostname
         if password:
@@ -678,7 +678,7 @@ class EcsConnection(Connection):
             internet_max_bandwidth_out=None,
             hostname=None, password=None, system_disk_type=None,
             internet_charge_type=None,
-	    instance_charge_type='PrePaid', period=1,
+            instance_charge_type='PrePaid', period=1,
             assign_public_ip=True, block_till_ready=True,
             data_disks=None, description=None, zone_id=None):
         """Create and start an instance.
@@ -770,7 +770,7 @@ class EcsConnection(Connection):
             hostname=hostname, password=password,
             system_disk_type=system_disk_type,
             internet_charge_type=internet_charge_type,
-	    instance_charge_type=instance_charge_type,
+            instance_charge_type=instance_charge_type,
             data_disks=data_disks, description=description, zone_id=zone_id)
 
         # Modify the security groups.

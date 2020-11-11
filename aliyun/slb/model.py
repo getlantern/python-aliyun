@@ -12,7 +12,7 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-import connection as slb
+from . import connection as slb
 
 
 class Region(object):
@@ -25,7 +25,7 @@ class Region(object):
                 self.__dict__ == other.__dict__)
 
     def __repr__(self):
-        return u'<SLBRegion %s at %s>' % (self.region_id, id(self))
+        return '<SLBRegion %s at %s>' % (self.region_id, id(self))
 
 
 class LoadBalancerStatus(object):
@@ -125,7 +125,7 @@ class ListenerStatus(object):
         self.backend_servers = backend_servers
 
     def __repr__(self):
-        return u'<ListenerStatus %s at %s>' % (self.listener_port, id(self))
+        return '<ListenerStatus %s at %s>' % (self.listener_port, id(self))
 
     def __eq__(self, other):
         return (self.__class__ == other.__class__ and
@@ -222,7 +222,7 @@ class TCPListener(Listener):
             interval)
 
     def __repr__(self):
-        return u'<TCPListener on %s for %s at %s>' % (
+        return '<TCPListener on %s for %s at %s>' % (
             self.listener_port, self.load_balancer_id, id(self))
 
 
@@ -303,7 +303,7 @@ class HTTPListener(Listener):
         self.uri = uri
 
     def __repr__(self):
-        return u'<HTTPListener on %s at %s>' % (self.listener_port, id(self))
+        return '<HTTPListener on %s at %s>' % (self.listener_port, id(self))
 
 
 class BackendServerStatus(object):
@@ -314,7 +314,7 @@ class BackendServerStatus(object):
 
     def __repr__(self):
         return (
-            u'<BackendServerStatus %s is %s at %s>' % (
+            '<BackendServerStatus %s is %s at %s>' % (
                 self.server_id,
                 self.status,
                 id(self))
@@ -342,7 +342,7 @@ class BackendServer(object):
         self.weight = weight
 
     def __repr__(self):
-        return u'<BackendServer %s at %s>' % (self.instance_id, id(self))
+        return '<BackendServer %s at %s>' % (self.instance_id, id(self))
 
     def __eq__(self, other):
         return (self.__class__ == other.__class__ and

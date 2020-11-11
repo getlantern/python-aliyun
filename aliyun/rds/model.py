@@ -30,7 +30,7 @@ class RDSInstanceStatus(object):
         self.status = status
 
     def __repr__(self):
-        return u'<InstanceId %s is %s at %s>' % (
+        return '<InstanceId %s is %s at %s>' % (
             self.instance_id, self.status, id(self))
 
     def __eq__(self, other):

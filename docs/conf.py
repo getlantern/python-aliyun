@@ -49,8 +49,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'python-aliyun'
-copyright = u'2014, Adam Gray, Akshay Dayal, North Bits'
+project = 'python-aliyun'
+copyright = '2014, Adam Gray, Akshay Dayal, North Bits'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -202,8 +202,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'python-aliyun.tex', u'python-aliyun Documentation',
-   u'Adam Gray, Akshay Dayal, North Bits', 'manual'),
+  ('index', 'python-aliyun.tex', 'python-aliyun Documentation',
+   'Adam Gray, Akshay Dayal, North Bits', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -232,8 +232,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'python-aliyun', u'python-aliyun Documentation',
-     [u'Adam Gray, Akshay Dayal, North Bits'], 1)
+    ('index', 'python-aliyun', 'python-aliyun Documentation',
+     ['Adam Gray, Akshay Dayal, North Bits'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -246,8 +246,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'python-aliyun', u'python-aliyun Documentation',
-   u'Adam Gray, Akshay Dayal, North Bits', 'python-aliyun', 'One line description of project.',
+  ('index', 'python-aliyun', 'python-aliyun Documentation',
+   'Adam Gray, Akshay Dayal, North Bits', 'python-aliyun', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -267,10 +267,10 @@ texinfo_documents = [
 # -- Options for Epub output ----------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'python-aliyun'
-epub_author = u'Adam Gray, Akshay Dayal, North Bits'
-epub_publisher = u'Adam Gray, Akshay Dayal, North Bits'
-epub_copyright = u'2014, Adam Gray, Akshay Dayal, North Bits'
+epub_title = 'python-aliyun'
+epub_author = 'Adam Gray, Akshay Dayal, North Bits'
+epub_publisher = 'Adam Gray, Akshay Dayal, North Bits'
+epub_copyright = '2014, Adam Gray, Akshay Dayal, North Bits'
 
 # The basename for the epub file. It defaults to the project name.
 #epub_basename = u'python-aliyun'

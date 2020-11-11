@@ -88,5 +88,5 @@ if __name__ == '__main__':
     params = dict([tuple(arg.split('=')) for arg in args.remainder if '=' in arg])
 
     result = c.get(params)
-    print json.dumps(result, indent=4, sort_keys=True, separators=(',',':'), ensure_ascii=False)
+    print(json.dumps(result, indent=4, sort_keys=True, separators=(',',':'), ensure_ascii=False))
 

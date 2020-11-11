@@ -384,7 +384,7 @@ class DiskActionsTest(EcsConnectionTest):
     def testCreateDiskArgs(self):
         try:
             self.conn.create_disk('i1', size=5, snapshot_id='snap')
-        except ecs.Error, e:
+        except ecs.Error as e:
             self.assertTrue(e.message.startswith("Use size or snapshot_id."))
 
     def testDetachDisk(self):
@@ -524,7 +524,7 @@ class CreateInstanceTest(EcsConnectionTest):
         disks = [('cloud', 1024, 'snap')]
         try:
             self.conn.create_instance('image', 'type', 'sg1', data_disks=disks)
-        except DiskMappingError, e:
+        except DiskMappingError as e:
             self.assertTrue(e.__class__.__name__ == 'DiskMappingError')
 
         self.mox.VerifyAll()
@@ -972,7 +972,7 @@ class DescribeSnapshotTest(EcsConnectionTest):
         self.mox.ReplayAll()
         try:
             self.conn.describe_snapshot('s-snap')
-        except ecs.Error, e:
+        except ecs.Error as e:
             self.assertTrue(e.message.startswith('Could not find'))
 
         self.mox.VerifyAll()

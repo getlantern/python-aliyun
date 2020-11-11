@@ -41,7 +41,7 @@ class RegionTest(unittest.TestCase):
 
     def testRepr(self):
         region = ecs.Region('region', 'name')
-        self.assertTrue(repr(region).startswith(u'<Region region (name) at '))
+        self.assertTrue(repr(region).startswith('<Region region (name) at '))
 
 
 class InstanceTest(unittest.TestCase):
@@ -117,7 +117,7 @@ class InstanceStatusTest(unittest.TestCase):
 
     def testRepr(self):
         is1 = ecs.InstanceStatus('i1', 'running')
-        self.assertTrue(repr(is1).startswith(u'<InstanceId i1 is running at'))
+        self.assertTrue(repr(is1).startswith('<InstanceId i1 is running at'))
 
 
 class InstanceTypeTest(unittest.TestCase):
@@ -134,7 +134,7 @@ class InstanceTypeTest(unittest.TestCase):
 
     def testRepr(self):
         t1 = ecs.InstanceType('t1', 4, 2)
-        self.assertTrue(repr(t1).startswith(u'<InstanceType t1'))
+        self.assertTrue(repr(t1).startswith('<InstanceType t1'))
 
 
 class SnapshotTest(unittest.TestCase):
@@ -154,7 +154,7 @@ class SnapshotTest(unittest.TestCase):
 
     def testRepr(self):
         s1 = ecs.Snapshot('s1', 'sn', 100, self.now)
-        self.assertTrue(repr(s1).startswith(u'<Snapshot s1 is 100% ready at'))
+        self.assertTrue(repr(s1).startswith('<Snapshot s1 is 100% ready at'))
 
 
 class AutoSnapshotPolicyTest(unittest.TestCase):
@@ -171,7 +171,7 @@ class AutoSnapshotPolicyTest(unittest.TestCase):
 
     def testRepr(self):
         asp = ecs.AutoSnapshotPolicy(False, 1, 1, False, False, 1, 1, False)
-        self.assertTrue(repr(asp).startswith(u'<AutoSnapshotPolicy at'))
+        self.assertTrue(repr(asp).startswith('<AutoSnapshotPolicy at'))
 
 
 class AutoSnapshotExecutionStatusTest(unittest.TestCase):
@@ -230,7 +230,7 @@ class DiskTest(unittest.TestCase):
     def testRepr(self):
         d1 = ecs.Disk('d1', 'system', 'cloud', 5)
         self.assertTrue(
-            repr(d1).startswith(u'<Disk d1 of type system is 5GB at'))
+            repr(d1).startswith('<Disk d1 of type system is 5GB at'))
 
 
 class DiskMappingTest(unittest.TestCase):
@@ -265,7 +265,7 @@ class ImageTest(unittest.TestCase):
     def testRepr(self):
         i1 = ecs.Image('i1', 'version', 'name', 'desc', 1, 'arch', 'owner', 'os')
         self.assertTrue(repr(i1).startswith(
-            u'<Image i1(desc) for platform os and arch arch'))
+            '<Image i1(desc) for platform os and arch arch'))
 
 
 class SecurityGroupInfoTest(unittest.TestCase):
@@ -282,7 +282,7 @@ class SecurityGroupInfoTest(unittest.TestCase):
 
     def testRepr(self):
         sg1 = ecs.SecurityGroupInfo('sg1', 'desc1')
-        self.assertTrue(repr(sg1).startswith(u'<SecurityGroupInfo sg1'))
+        self.assertTrue(repr(sg1).startswith('<SecurityGroupInfo sg1'))
 
 
 class SecurityGroupPermission(unittest.TestCase):
@@ -305,7 +305,7 @@ class SecurityGroupPermission(unittest.TestCase):
         p1 = ecs.SecurityGroupPermission('TCP', '22/22', '1.1.1.1/32', None,
                                          'Accept', 'internet')
         self.assertTrue(repr(p1).startswith(
-            u'<SecurityGroupPermission Accept TCP 22/22 from 1.1.1.1/32 at'))
+            '<SecurityGroupPermission Accept TCP 22/22 from 1.1.1.1/32 at'))
 
 
 class SecurityGroupTest(unittest.TestCase):
@@ -333,7 +333,7 @@ class SecurityGroupTest(unittest.TestCase):
                                          'Accept', 'internet')
         sg1 = ecs.SecurityGroup('r', 'sg1', 'd', [p1])
         self.assertTrue(repr(sg1).startswith(
-            u'<SecurityGroup sg1, d at'))
+            '<SecurityGroup sg1, d at'))
 
 class ZoneTest(unittest.TestCase):
 

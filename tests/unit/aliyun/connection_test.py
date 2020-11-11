@@ -77,7 +77,7 @@ class CredentialsTest(unittest.TestCase):
                                          'ecs',
                                          'some_access_key_id',
                                          'some_secret_access_key')
-        encoded = c._percent_encode(u'*+ ~')
+        encoded = c._percent_encode('*+ ~')
         self.assertEqual(str, type(encoded))
         self.assertEqual('%2A%2B%20~', encoded)
 

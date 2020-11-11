@@ -19,12 +19,12 @@ import json
 import logging
 import os
 import time
-import urllib
-import urllib2
+import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.error, urllib.parse
 import uuid
 import sys
 from collections import namedtuple
-from ConfigParser import ConfigParser
+from configparser import ConfigParser
 from hashlib import sha1
 
 
@@ -137,15 +137,15 @@ class Connection(object):
         encoding = encoding or sys.stdin.encoding or DEFAULT_ENCODING
 
         try:
-            s = unicode(request, encoding)
+            s = str(request, encoding)
         except TypeError:
-            if not isinstance(request, unicode):
+            if not isinstance(request, str):
                 # We accept int etc. types as well
-                s = unicode(request)
+                s = str(request)
             else:
                 s = request
 
-        res = urllib.quote(
+        res = urllib.parse.quote(
             s.encode('utf8'),
             safe='~')
         return res
@@ -182,27 +182,27 @@ class Connection(object):
         }
         # And overwrite some...
         parameters.update(params)
-	# 'RegionId' is not needed for DNS requests
-	if 'DomainName' in parameters:
-	    parameters.pop('RegionId')
+        # 'RegionId' is not needed for DNS requests
+        if 'DomainName' in parameters:
+            parameters.pop('RegionId')
 
         signature = self._compute_signature(parameters, encoding=encoding)
         parameters['Signature'] = signature
 
-        url = "%s/?%s" % (self.service, urllib.urlencode(parameters))
-        request = urllib2.Request(url)
+        url = "%s/?%s" % (self.service, urllib.parse.urlencode(parameters))
+        request = urllib.request.Request(url)
         return request
 
     def _get(self, request):
         logger.debug('URL requested: %s', request.get_full_url())
         try:
-            conn = urllib2.urlopen(request)
+            conn = urllib.request.urlopen(request)
             response = conn.read()
             encoding = conn.headers['content-type'].split('charset=')[-1]
-            unicode_response = unicode(response, encoding)
+            unicode_response = str(response, encoding)
             logger.debug('URL response: %s', unicode_response)
             return json.loads(unicode_response)
-        except urllib2.HTTPError as e:
+        except urllib.error.HTTPError as e:
             logger.error('Error GETing URL: %s', request.get_full_url())
             raise Error(e.read())
 
