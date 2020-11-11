@@ -162,7 +162,9 @@ class Connection(object):
 
         string_to_sign = 'GET&%2F&' + self._percent_encode(canonicalized_query_string, encoding)
 
-        h = hmac.new(self.secret_access_key + "&", string_to_sign, sha1)
+        h = hmac.new((self.secret_access_key + "&").encode('ascii'),
+                     string_to_sign.encode('ascii'),
+                     sha1)
         signature = base64.b64encode(h.digest())
         return signature
 
